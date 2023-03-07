@@ -37,6 +37,7 @@ import (
 	"github.com/hashicorp/vault/command/agent/auth/cert"
 	"github.com/hashicorp/vault/command/agent/auth/cf"
 	"github.com/hashicorp/vault/command/agent/auth/gcp"
+	"github.com/hashicorp/vault/command/agent/auth/ibmcloud"
 	"github.com/hashicorp/vault/command/agent/auth/jwt"
 	"github.com/hashicorp/vault/command/agent/auth/kerberos"
 	"github.com/hashicorp/vault/command/agent/auth/kubernetes"
@@ -362,6 +363,8 @@ func (c *AgentCommand) Run(args []string) int {
 			method, err = cf.NewCFAuthMethod(authConfig)
 		case "gcp":
 			method, err = gcp.NewGCPAuthMethod(authConfig)
+		case "ibmcloud":
+			method, err = ibmcloud.NewIBMCloudAuthMethod(authConfig)
 		case "jwt":
 			method, err = jwt.NewJWTAuthMethod(authConfig)
 		case "kerberos":
