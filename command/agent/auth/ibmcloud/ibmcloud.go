@@ -244,7 +244,7 @@ func getIAMCreds(tokenPath, profileID string) (data *IBMAPIAuthResponseStruct, e
 	if resp.StatusCode != 200 {
 		payloadErr := new(IBMAPIError)
 		json.NewDecoder(resp.Body).Decode(payloadErr)
-		return nil, errors.New(fmt.Sprintf("Unkown status code: %s. Message: %s", resp.Status, payloadErr.Errors[0].Message))
+		return nil, errors.New(fmt.Sprintf("Unkown status code: %s. Message: %s", resp.Status, resp.Body))
 	}
 
 	defer resp.Body.Close()
