@@ -158,7 +158,7 @@ func (a *ibmcloudMethod) Authenticate(ctx context.Context, client *api.Client) (
 	a.credLock.Lock()
 	defer a.credLock.Unlock()
 
-	data["token"] = a.lastCreds
+	data["token"] = a.lastCreds.AccessToken
 
 	return "auth/ibmcloud/login", nil, data, nil
 }
